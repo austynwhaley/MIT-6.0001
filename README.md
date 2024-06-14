@@ -6,7 +6,6 @@ This repository contains solutions to various assignments from MIT coursework. A
 
 - [Installation](#installation)
 - [Usage](#usage)
-- [Coursework](#coursework)
 - [License](#license)
 - [Contributing](#contributing)
 
