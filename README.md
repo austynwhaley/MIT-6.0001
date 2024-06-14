@@ -7,7 +7,6 @@ This repository contains solutions to various assignments from MIT coursework. A
 - [Installation](#installation)
 - [Usage](#usage)
 - [License](#license)
-- [Contributing](#contributing)
 
 ## Installation
 
@@ -38,16 +37,6 @@ This repository contains solutions to various assignments from MIT coursework. A
 ## License
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
-
-## Contributing
-
-Contributions are welcome! Please fork this repository and submit pull requests for any improvements or additional solutions you want to share.
-
-1. Fork the Repository
-2. Create your feature branch (`git checkout -b feature/YourFeature`)
-3. Commit your changes (`git commit -m 'Add some feature'`)
-4. Push to the branch (`git push origin feature/YourFeature`)
-5. Open a pull request
 
 ---
 
