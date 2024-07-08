@@ -52,17 +52,11 @@ wordlist = load_words()
 
 
 def is_word_guessed(secret_word, letters_guessed):
-    '''
-    secret_word: string, the word the user is guessing; assumes all letters are
-      lowercase
-    letters_guessed: list (of letters), which letters have been guessed so far;
-      assumes that all letters are lowercase
-    returns: boolean, True if all the letters of secret_word are in letters_guessed;
-      False otherwise
-    '''
-    # FILL IN YOUR CODE HERE AND DELETE "pass"
-    pass
-
+    
+    for letter in secret_word:
+        if letter not in letters_guessed:
+            return False
+    return True
 
 
 def get_guessed_word(secret_word, letters_guessed):
@@ -113,10 +107,47 @@ def hangman(secret_word):
     
     Follows the other limitations detailed in the problem write-up.
     '''
-    # FILL IN YOUR CODE HERE AND DELETE "pass"
-    pass
-
-
+    secret_word = choose_word(wordlist)
+    secret_word_length = len(secret_word)
+    user_guesses = 6
+    letters_guessed = []
+    display= ''    
+    print('!! HELLO LETS PLAY HANGMAN !!')
+    print('Your word is ' + str(secret_word_length) + ' characters long')
+    
+    def word_slots(secret_word, letters_guessed):
+        display= ''
+        for letter in secret_word:
+            if letter in letters_guessed:
+                display += letter.upper() + ' '
+            else: 
+                display += '_ '
+        return display
+    
+    
+    print(word_slots(secret_word, letters_guessed))
+    
+    while user_guesses > 0:
+        guess = input("What is the letter you'd like to guess? ")
+        
+        if guess.lower() in secret_word:
+            print("Correct!")
+            letters_guessed.append(guess)
+        else:
+            print("Wrong!")
+            user_guesses -= 1;
+            print('You have ' + str(user_guesses) + ' guesses remaining')
+        
+        print(word_slots(secret_word, letters_guessed))
+        
+        if all(letter in letters_guessed for letter in secret_word):
+         print("Yup nice job!")
+         break
+        
+    else:
+        print("You lose! The word was " + secret_word)
+        
+    
 
 # When you've completed your hangman function, scroll down to the bottom
 # of the file and uncomment the first two lines to test
