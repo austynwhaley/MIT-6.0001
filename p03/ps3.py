@@ -92,7 +92,18 @@ def get_word_score(word, n):
     returns: int >= 0
     """
     
-    pass  # TO DO... Remove this line when you implement this function
+    score = 0
+    sec_score = max(1, 7 * len(word) - 3 * (n - len(word)))
+    
+    if word == "":
+        return 0
+    
+    for char in word.lower():
+        if char in SCRABBLE_LETTER_VALUES:
+            score += SCRABBLE_LETTER_VALUES[char]
+            
+    
+    return score * sec_score
 
 #
 # Make sure you understand how this function works and what it does!
@@ -166,9 +177,24 @@ def update_hand(hand, word):
     word: string
     hand: dictionary (string -> int)    
     returns: dictionary (string -> int)
-    """
+    
+    >> hand = {'a':1, 'q':1, 'l':2, 'm':1, 'u':1, 'i':1}
+    >> display_hand(hand)
+    a q l l m u i
+    >> new_hand = update_hand(hand, 'quail') 
 
-    pass  # TO DO... Remove this line when you implement this function
+    """
+    
+    new_hand = dict(hand)
+    for char in word.lower():
+        if char in new_hand and new_hand[char] > 1:
+            new_hand[char] -= 1
+        else:
+            del new_hand[char]
+        
+    return new_hand
+
+    
 
 #
 # Problem #3: Test word validity
@@ -185,7 +211,16 @@ def is_valid_word(word, hand, word_list):
     returns: boolean
     """
 
-    pass  # TO DO... Remove this line when you implement this function
+    if word.lower() not in word_list:
+        return False
+    
+    new_hand = hand.copy()
+
+    for char in word.lower():
+        if new_hand.get(char, 0) == 0:
+            return False
+        new_hand[char] -= 1
+    return True
 
 #
 # Problem #5: Playing a hand
